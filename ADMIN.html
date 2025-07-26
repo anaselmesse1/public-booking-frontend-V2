@@ -1,0 +1,388 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BookedIN - Admin Dashboard</title>
+  <!-- Tailwind CSS from CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="css/styles.css">
+  <!-- Tailwind Config -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            purple: {
+              50: '#f5f3ff',
+              100: '#ede9fe',
+              200: '#ddd6fe',
+              300: '#c4b5fd',
+              400: '#a78bfa',
+              500: '#8b5cf6',
+              600: '#7c3aed',
+              700: '#6d28d9',
+              800: '#5b21b6',
+              900: '#4c1d95',
+              950: '#2e1065',
+            },
+            blue: {
+              50: '#eff6ff',
+              100: '#dbeafe',
+              200: '#bfdbfe',
+              300: '#93c5fd',
+              400: '#60a5fa',
+              500: '#3b82f6',
+              600: '#2563eb',
+              700: '#1d4ed8',
+              800: '#1e40af',
+              900: '#1e3a8a',
+              950: '#172554',
+            },
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-gray-50 min-h-screen">
+  <!-- Header/Navigation -->
+  <header class="bg-white shadow-md border-b border-gray-200">
+    <nav class="px-4 lg:px-6 py-4">
+      <div class="flex justify-between items-center">
+        <!-- Logo -->
+        <div class="flex items-center">
+          <svg fill="#5B21B6" width="40" height="40" viewBox="-2.4 -2.4 28.8 28.8" role="img" xmlns="http://www.w3.org/2000/svg" stroke="#5B21B6" stroke-width="0.192" class="transition-transform duration-300 hover:rotate-12">
+            <g id="SVGRepo_bgCarrier" stroke-width="0">
+              <path transform="translate(-2.4, -2.4), scale(0.8999999999999999)" d="M16,29.029932962632493C19.419769568698868,29.775500161375046,22.799834751273824,27.73759168423236,25.441878725793263,25.441878725793266C28.30717060009551,22.9521822071188,30.741536310658013,19.78733733090678,30.995627282481443,16C31.264381251274838,11.994104270859768,30.174017549782963,7.376045478416735,26.799891101640284,5.200108898359719C23.63762438574928,3.1607983008592435,19.72238448269046,5.779421235970716,16,6.329486921625703C13.193403560544922,6.744224410996995,10.029925815676181,6.018629745457261,7.981018807075408,7.981018807075406C5.907953220112898,9.966546317496892,5.507941547648139,13.15680735676055,5.90313266080461,15.999999999999998C6.25052964854195,18.499338995579272,8.392570799601787,20.067207717353035,9.938186544069968,22.06181345593003C11.898507668719992,24.59159343434635,12.873038275783616,28.34820279150105,16,29.029932962632493" fill="#1E40AF" strokewidth="0"/>
+            </g>
+            <g id="SVGRepo_iconCarrier">
+              <path d="m20.348 7.829-1.491-2.65 2.889.001c.077 0 .167.051.21.12l1.533 2.529zm-5.344 16.046c-.07.125-.161.125-.19.125h-2.956l4.591-8.243a.442.442 0 0 0-.384-.657l-7.825.01-1.556-2.694h11.397c.248-.017.362-.158.393-.231l1.879-3.473h3.101zm-3.91-.314-1.522-2.506c-.023-.037-.034-.128.014-.214l2.694-4.853 3.034-.004zM5.92 18.403l-1.508-2.68 1.52-2.848 1.524 2.64c-.474.891-1.213 2.283-1.536 2.888zm-3.668.417a.268.268 0 0 1-.207-.12L.51 16.17h3.141l1.491 2.65-2.891-.001zM8.996.126C9.066 0 9.156 0 9.186 0h2.968L7.551 8.243c-.11.167-.11.712.58.657l7.63-.01c.527.92 1.002 1.752 1.51 2.642H5.922a.465.465 0 0 0-.397.234l-1.879 3.522h-3.1L8.996.126zm3.917.323 1.515 2.496c.023.037.034.128-.015.214L11.72 8.012l-3.032.004zm5.166 5.145 1.509 2.68-1.538 2.844c-.517-.905-.997-1.745-1.529-2.673.328-.6 1.195-2.189 1.558-2.851z"/>
+            </g>
+          </svg>
+          <h1 class="text-2xl font-bold text-purple-800 ml-2">book<span class="text-blue-700 text-lg">IN</span></h1>
+          <span class="ml-4 px-3 py-1 bg-purple-100 text-purple-800 text-sm font-medium rounded-full">Admin Dashboard</span>
+        </div>
+        
+        <!-- User Menu -->
+        <div class="flex items-center space-x-4">
+          <div class="relative">
+            <button class="flex items-center space-x-2 text-gray-700 hover:text-purple-600 transition-colors duration-300">
+              <div class="w-8 h-8 bg-gradient-to-r from-purple-600 to-blue-600 rounded-full flex items-center justify-center">
+                <i class="fas fa-user text-white text-sm"></i>
+              </div>
+              <span class="font-medium">Admin</span>
+              <i class="fas fa-chevron-down text-sm"></i>
+            </button>
+          </div>
+          <a href="BOOKEDIN.html" class="flex items-center space-x-2 text-red-600 hover:text-red-800 transition-colors duration-300">
+            <i class="fas fa-sign-out-alt"></i>
+            <span class="font-medium">Logout</span>
+          </a>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Main Content -->
+  <main class="p-6">
+    <div class="max-w-7xl mx-auto">
+      <!-- Page Header -->
+      <div class="mb-8">
+        <h2 class="text-3xl font-bold text-gray-900 mb-2">Dashboard Overview</h2>
+        <p class="text-gray-600">Manage your appointments and monitor your booking system</p>
+      </div>
+
+      <!-- Stats Cards -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+        <div class="bg-white rounded-xl shadow-lg p-6 border-l-4 border-purple-500">
+          <div class="flex items-center justify-between">
+            <div>
+              <p class="text-sm font-medium text-gray-600">Total Appointments</p>
+              <p class="text-3xl font-bold text-purple-900">142</p>
+            </div>
+            <div class="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center">
+              <i class="fas fa-calendar-check text-purple-600 text-xl"></i>
+            </div>
+          </div>
+          <div class="mt-4 flex items-center">
+            <span class="text-green-500 text-sm font-medium flex items-center">
+              <i class="fas fa-arrow-up mr-1"></i>
+              12%
+            </span>
+            <span class="text-gray-500 text-sm ml-2">from last month</span>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-xl shadow-lg p-6 border-l-4 border-blue-500">
+          <div class="flex items-center justify-between">
+            <div>
+              <p class="text-sm font-medium text-gray-600">Today's Bookings</p>
+              <p class="text-3xl font-bold text-blue-900">8</p>
+            </div>
+            <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center">
+              <i class="fas fa-clock text-blue-600 text-xl"></i>
+            </div>
+          </div>
+          <div class="mt-4 flex items-center">
+            <span class="text-green-500 text-sm font-medium flex items-center">
+              <i class="fas fa-arrow-up mr-1"></i>
+              5%
+            </span>
+            <span class="text-gray-500 text-sm ml-2">from yesterday</span>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-xl shadow-lg p-6 border-l-4 border-green-500">
+          <div class="flex items-center justify-between">
+            <div>
+              <p class="text-sm font-medium text-gray-600">Completed</p>
+              <p class="text-3xl font-bold text-green-900">128</p>
+            </div>
+            <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center">
+              <i class="fas fa-check-circle text-green-600 text-xl"></i>
+            </div>
+          </div>
+          <div class="mt-4 flex items-center">
+            <span class="text-green-500 text-sm font-medium flex items-center">
+              <i class="fas fa-arrow-up mr-1"></i>
+              8%
+            </span>
+            <span class="text-gray-500 text-sm ml-2">completion rate</span>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-xl shadow-lg p-6 border-l-4 border-red-500">
+          <div class="flex items-center justify-between">
+            <div>
+              <p class="text-sm font-medium text-gray-600">Cancelled</p>
+              <p class="text-3xl font-bold text-red-900">14</p>
+            </div>
+            <div class="w-12 h-12 bg-red-100 rounded-full flex items-center justify-center">
+              <i class="fas fa-times-circle text-red-600 text-xl"></i>
+            </div>
+          </div>
+          <div class="mt-4 flex items-center">
+            <span class="text-red-500 text-sm font-medium flex items-center">
+              <i class="fas fa-arrow-down mr-1"></i>
+              3%
+            </span>
+            <span class="text-gray-500 text-sm ml-2">cancellation rate</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Main Content Grid -->
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <!-- Appointments List -->
+        <div class="lg:col-span-2">
+          <div class="bg-white rounded-xl shadow-lg">
+            <div class="p-6 border-b border-gray-200">
+              <div class="flex items-center justify-between">
+                <h3 class="text-xl font-semibold text-gray-900 flex items-center">
+                  <i class="fas fa-list-ul text-purple-600 mr-2"></i>
+                  Recent Appointments
+                </h3>
+                <button class="text-purple-600 hover:text-purple-800 font-medium">
+                  View All
+                </button>
+              </div>
+            </div>
+            <div class="divide-y divide-gray-200">
+              <!-- Appointment Items -->
+              <div class="p-6 hover:bg-gray-50 transition-colors duration-300">
+                <div class="flex items-center justify-between">
+                  <div class="flex items-center space-x-4">
+                    <div class="w-10 h-10 bg-purple-100 rounded-full flex items-center justify-center">
+                      <i class="fas fa-user text-purple-600"></i>
+                    </div>
+                    <div>
+                      <h4 class="font-medium text-gray-900">John Smith</h4>
+                      <p class="text-sm text-gray-500">Initial Consultation</p>
+                      <p class="text-sm text-gray-400">john.smith@email.com</p>
+                    </div>
+                  </div>
+                  <div class="text-right">
+                    <p class="font-medium text-gray-900">Today, 2:00 PM</p>
+                    <button onclick="cancelAppointment(this)" class="text-red-600 hover:text-red-800 text-sm flex items-center mt-1">
+                      <i class="fas fa-times mr-1"></i>
+                      Cancel
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              <div class="p-6 hover:bg-gray-50 transition-colors duration-300">
+                <div class="flex items-center justify-between">
+                  <div class="flex items-center space-x-4">
+                    <div class="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center">
+                      <i class="fas fa-user text-blue-600"></i>
+                    </div>
+                    <div>
+                      <h4 class="font-medium text-gray-900">Sarah Johnson</h4>
+                      <p class="text-sm text-gray-500">Follow-Up Session</p>
+                      <p class="text-sm text-gray-400">sarah.j@email.com</p>
+                    </div>
+                  </div>
+                  <div class="text-right">
+                    <p class="font-medium text-gray-900">Today, 3:30 PM</p>
+                    <button onclick="cancelAppointment(this)" class="text-red-600 hover:text-red-800 text-sm flex items-center mt-1">
+                      <i class="fas fa-times mr-1"></i>
+                      Cancel
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              <div class="p-6 hover:bg-gray-50 transition-colors duration-300">
+                <div class="flex items-center justify-between">
+                  <div class="flex items-center space-x-4">
+                    <div class="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center">
+                      <i class="fas fa-user text-green-600"></i>
+                    </div>
+                    <div>
+                      <h4 class="font-medium text-gray-900">Mike Davis</h4>
+                      <p class="text-sm text-gray-500">Standard Appointment</p>
+                      <p class="text-sm text-gray-400">mike.davis@email.com</p>
+                    </div>
+                  </div>
+                  <div class="text-right">
+                    <p class="font-medium text-gray-900">Tomorrow, 10:00 AM</p>
+                    <button onclick="cancelAppointment(this)" class="text-red-600 hover:text-red-800 text-sm flex items-center mt-1">
+                      <i class="fas fa-times mr-1"></i>
+                      Cancel
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              <div class="p-6 hover:bg-gray-50 transition-colors duration-300">
+                <div class="flex items-center justify-between">
+                  <div class="flex items-center space-x-4">
+                    <div class="w-10 h-10 bg-yellow-100 rounded-full flex items-center justify-center">
+                      <i class="fas fa-user text-yellow-600"></i>
+                    </div>
+                    <div>
+                      <h4 class="font-medium text-gray-900">Emma Wilson</h4>
+                      <p class="text-sm text-gray-500">Premium Service</p>
+                      <p class="text-sm text-gray-400">emma.w@email.com</p>
+                    </div>
+                  </div>
+                  <div class="text-right">
+                    <p class="font-medium text-gray-900">Tomorrow, 2:15 PM</p>
+                    <button onclick="cancelAppointment(this)" class="text-red-600 hover:text-red-800 text-sm flex items-center mt-1">
+                      <i class="fas fa-times mr-1"></i>
+                      Cancel
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Sidebar -->
+        <div class="space-y-6">
+          <!-- Calendar Widget -->
+          <div class="bg-white rounded-xl shadow-lg p-6">
+            <h3 class="text-lg font-semibold text-gray-900 mb-4 flex items-center">
+              <i class="fas fa-calendar-alt text-purple-600 mr-2"></i>
+              Quick Calendar
+            </h3>
+            <div class="calendar-widget">
+              <div class="wrapper bg-white rounded-xl overflow-hidden">
+                <header class="flex items-center justify-between p-4 border-b">
+                  <p class="current-date text-lg font-medium text-purple-900">July 2025</p>
+                  <div class="icons flex">
+                    <span id="prev" class="cursor-pointer w-8 h-8 flex items-center justify-center rounded-full hover:bg-purple-100">
+                      <i class="fa-solid fa-caret-left text-purple-700"></i>
+                    </span>
+                    <span id="next" class="cursor-pointer w-8 h-8 flex items-center justify-center rounded-full hover:bg-purple-100 ml-1">
+                      <i class="fa-solid fa-caret-right text-purple-700"></i>
+                    </span>
+                  </div>
+                </header>
+                <div class="calendar p-4">
+                  <ul class="weeks grid grid-cols-7 gap-1 mb-2">
+                    <li class="text-center font-medium text-purple-900 text-sm">S</li>
+                    <li class="text-center font-medium text-purple-900 text-sm">M</li>
+                    <li class="text-center font-medium text-purple-900 text-sm">T</li>
+                    <li class="text-center font-medium text-purple-900 text-sm">W</li>
+                    <li class="text-center font-medium text-purple-900 text-sm">T</li>
+                    <li class="text-center font-medium text-purple-900 text-sm">F</li>
+                    <li class="text-center font-medium text-purple-900 text-sm">S</li>
+                  </ul>
+                  <ul class="days grid grid-cols-7 gap-1">
+                    <!-- Calendar days will be here -->
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Quick Actions -->
+          <div class="bg-white rounded-xl shadow-lg p-6">
+            <h3 class="text-lg font-semibold text-gray-900 mb-4 flex items-center">
+              <i class="fas fa-bolt text-purple-600 mr-2"></i>
+              Quick Actions
+            </h3>
+            <div class="space-y-3">
+              <button class="w-full bg-gradient-to-r from-purple-600 to-blue-600 text-white py-3 px-4 rounded-lg flex items-center justify-center hover:shadow-lg transition-shadow duration-300">
+                <i class="fas fa-plus mr-2"></i>
+                Add New Appointment
+              </button>
+              <button class="w-full border border-purple-300 text-purple-700 py-3 px-4 rounded-lg flex items-center justify-center hover:bg-purple-50 transition-colors duration-300">
+                <i class="fas fa-chart-bar mr-2"></i>
+                View Analytics
+              </button>
+              <button class="w-full border border-gray-300 text-gray-700 py-3 px-4 rounded-lg flex items-center justify-center hover:bg-gray-50 transition-colors duration-300">
+                <i class="fas fa-cog mr-2"></i>
+                Settings
+              </button>
+            </div>
+          </div>
+
+          <!-- Website Share -->
+          <div class="bg-gradient-to-r from-purple-600 to-blue-600 rounded-xl shadow-lg p-6 text-white">
+            <h3 class="text-lg font-semibold mb-4 flex items-center">
+              <i class="fas fa-share-alt mr-2"></i>
+              Share Website
+            </h3>
+            <p class="text-purple-100 text-sm mb-4">Share your booking page with customers</p>
+            <div class="bg-white bg-opacity-20 rounded-lg p-3 flex items-center justify-between">
+              <span class="text-sm truncate">www.bookedin.com (soon)</span>
+              <button onclick="copyLink()" class="bg-white bg-opacity-30 hover:bg-opacity-40 p-2 rounded transition-colors duration-300">
+                <i class="fas fa-copy"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-white border-t border-gray-200 py-4 mt-12">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="flex flex-col md:flex-row justify-between items-center">
+        <p class="text-gray-600 text-sm">© 2025 BookedIN. All Rights Reserved.</p>
+        <div class="flex space-x-6 mt-2 md:mt-0">
+          <a href="#" class="text-gray-500 hover:text-purple-600 text-sm">Privacy Policy</a>
+          <a href="#" class="text-gray-500 hover:text-purple-600 text-sm">Terms of Service</a>
+          <a href="#" class="text-gray-500 hover:text-purple-600 text-sm">Support</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/calendar.js"></script>
+  <script src="admin.js"></script>
+</body>
+</html>
